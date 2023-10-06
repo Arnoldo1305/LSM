@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">LSM</string>
     <string name="title_activity_lista_categorias">ListaCategorias</string>
+    <string name="titulo_abecedario">Abecedario</string>
+    <string name="titulo_numeros">Números</string>
+    <string name="expandir_todo">Expandir todo</string>
 </resources>
