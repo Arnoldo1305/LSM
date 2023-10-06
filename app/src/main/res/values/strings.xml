@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">LSM</string>
     <string name="title_activity_lista_categorias">ListaCategorias</string>
+
+    <string name="string_main_titulo">Lenguaje de Señas Mexicanas</string>
+    <string name="string_boton_diccionario">Diccionario</string>
+    <string name="string_boton_traductor">Traductor</string>
+    <string name="string_salir">Salir</string>
+
 </resources>
