@@ -4,4 +4,9 @@
     <string name="titulo_abecedario">Abecedario</string>
     <string name="titulo_numeros">Números</string>
     <string name="expandir_todo">Expandir todo</string>
+
+    <string name="string_main_titulo">Lenguaje de Señas Mexicanas</string>
+    <string name="string_boton_diccionario">Diccionario</string>
+    <string name="string_boton_traductor">Traductor</string>
+    <string name="string_salir">Salir</string>
 </resources>
