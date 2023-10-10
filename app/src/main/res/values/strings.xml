@@ -1,9 +1,22 @@
 <resources>
     <string name="app_name">LSM</string>
     <string name="title_activity_lista_categorias">ListaCategorias</string>
-    <string name="titulo_abecedario">Abecedario</string>
-    <string name="titulo_numeros">Números</string>
-    <string name="expandir_todo">Expandir todo</string>
+    <string name="categorias_titulo">Categorías</string>
+    <string name="string_btnVolver">btnVolver</string>
+    <string name="string_btnBuscar">btnBuscar</string>
+    <string name="string_btnAbecedario">imgAbecedarios</string>
+    <string name="string_btnAnimales">imgAnimales</string>
+    <string name="string_btnCalendario">imgCalendario</string>
+    <string name="string_btnColores">imgColores</string>
+    <string name="string_btnAlimentos">imgAlimentos</string>
+    <string name="string_btnNumeros">imgNumeros</string>
+
+    <string name="abecedario_titulo">Abecedario</string>
+    <string name="animales_titulo">Animales</string>
+    <string name="calendario_titulo">Calendario</string>
+    <string name="colores_titulo">Colores</string>
+    <string name="alimentos_titulo">Alimentos</string>
+    <string name="numeros_titulo">Números</string>
 
     <string name="string_main_titulo">Lenguaje de Señas Mexicanas</string>
     <string name="string_boton_diccionario">Diccionario</string>
