@@ -13,6 +13,9 @@
         android:theme="@style/Theme.LSM"
         tools:targetApi="31">
         <activity
+            android:name=".Abecedario"
+            android:exported="false" />
+        <activity
             android:name=".ListaCategorias"
             android:exported="false"
             android:label="@string/title_activity_lista_categorias"
