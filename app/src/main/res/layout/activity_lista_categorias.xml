@@ -104,7 +104,7 @@
                     android:layout_height="70dp"
                     android:id="@+id/abecedarioImagen"
                     android:contentDescription="@string/string_btnAbecedario"
-                    android:src="@drawable/Logo_Abecedario"
+                    android:src="@drawable/abecedario"
                     android:layout_marginTop="15dp"
                     android:layout_centerHorizontal="true">
                 </ImageView>
@@ -143,7 +143,7 @@
                     android:layout_height="70dp"
                     android:id="@+id/alimentosImagen"
                     android:contentDescription="@string/string_btnAlimentos"
-                    android:src="@drawable/Logo_Comida"
+                    android:src="@drawable/alimentos"
                     android:layout_marginTop="15dp"
                     android:layout_centerHorizontal="true">
                 </ImageView>
@@ -197,7 +197,7 @@
                         android:layout_height="70dp"
                         android:id="@+id/animalesImagen"
                         android:contentDescription="@string/string_btnAnimales"
-                        android:src="@drawable/Logo_Animales"
+                        android:src="@drawable/abecedario"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true">
                     </ImageView>
@@ -236,7 +236,7 @@
                         android:layout_height="70dp"
                         android:id="@+id/calendarioImagen"
                         android:contentDescription="@string/string_btnCalendario"
-                        android:src="@drawable/Logo_Calendario"
+                        android:src="@drawable/calendario"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true">
                     </ImageView>
@@ -290,7 +290,7 @@
                         android:layout_height="70dp"
                         android:id="@+id/coloresImagen"
                         android:contentDescription="@string/string_btnCalendario"
-                        android:src="@drawable/Logo_Colores"
+                        android:src="@drawable/colores"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true">
                     </ImageView>
@@ -329,7 +329,7 @@
                         android:layout_height="70dp"
                         android:id="@+id/numerosImagen"
                         android:contentDescription="@string/string_btnNumeros"
-                        android:src="@drawable/Logo_Numeros"
+                        android:src="@drawable/numeros"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true">
                     </ImageView>
