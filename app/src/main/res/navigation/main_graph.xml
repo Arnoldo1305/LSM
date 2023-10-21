@@ -22,6 +22,15 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_menu_Fragment_to_categoriasFragment"
+            app:destination="@id/categoriasFragment" />
+        <action
+            android:id="@+id/action_menu_Fragment_to_info_Fragment"
+            app:destination="@id/info_Fragment" />
+        <action
+            android:id="@+id/action_menu_Fragment_to_abecedarioFragment"
+            app:destination="@id/abecedarioFragment" />
     </fragment>
     <fragment
         android:id="@+id/traductor_Fragment"

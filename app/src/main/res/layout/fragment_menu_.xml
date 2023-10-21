@@ -12,6 +12,14 @@
         android:id="@+id/btnNavegar"
         android:text="Navegar"
         android:layout_marginBottom="12dp"></Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnMenuToCategorias"
+        android:layout_gravity="center"
+        android:text="Categorias"
+        android:layout_marginBottom="12dp"></Button>
+
 
 
 </FrameLayout>
