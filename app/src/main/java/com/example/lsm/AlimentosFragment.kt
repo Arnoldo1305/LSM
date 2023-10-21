@@ -25,8 +25,9 @@ class AlimentosFragment : Fragment() {
         val btnVolver = root.findViewById<Button>(R.id.back_pressed)
 
         btnVolver.setOnClickListener{
-            findNavController().navigate(R.id.action_menu_Fragment_self)
+            findNavController().navigate(R.id.back_pressed)
         }
         return root
     }
+
 }

@@ -28,4 +28,26 @@
         android:name="com.example.lsm.traductor_Fragment"
         android:label="fragment_traductor_"
         tools:layout="@layout/fragment_traductor_" />
+    <fragment
+        android:id="@+id/categoriasFragment"
+        android:name="com.example.lsm.CategoriasFragment"
+        android:label="fragment_categorias"
+        tools:layout="@layout/fragment_categorias" >
+        <action
+            android:id="@+id/action_categoriasFragment_to_abecedarioFragment"
+            app:destination="@id/abecedarioFragment" />
+        <action
+            android:id="@+id/action_categoriasFragment_to_alimentosFragment2"
+            app:destination="@id/alimentosFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/abecedarioFragment"
+        android:name="com.example.lsm.AbecedarioFragment"
+        android:label="fragment_abecedario"
+        tools:layout="@layout/fragment_abecedario" />
+    <fragment
+        android:id="@+id/alimentosFragment2"
+        android:name="com.example.lsm.AlimentosFragment"
+        android:label="fragment_alimentos"
+        tools:layout="@layout/fragment_alimentos" />
 </navigation>
