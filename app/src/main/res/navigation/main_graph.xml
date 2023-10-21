@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_info_" />
     <fragment
         android:id="@+id/menu_Fragment"
-        android:name="com.example.lsm.menu_Fragment"
+        android:name="com.example.lsm.Menu_Fragment"
         android:label="fragment_menu_"
         tools:layout="@layout/fragment_menu_" >
         <action
@@ -31,10 +31,13 @@
         <action
             android:id="@+id/action_menu_Fragment_to_abecedarioFragment"
             app:destination="@id/abecedarioFragment" />
+        <action
+            android:id="@+id/action_menu_Fragment_to_prueba_Fragment"
+            app:destination="@id/prueba_Fragment" />
     </fragment>
     <fragment
         android:id="@+id/traductor_Fragment"
-        android:name="com.example.lsm.traductor_Fragment"
+        android:name="com.example.lsm.Traductor_Fragment"
         android:label="fragment_traductor_"
         tools:layout="@layout/fragment_traductor_" />
     <fragment
@@ -59,4 +62,14 @@
         android:name="com.example.lsm.AlimentosFragment"
         android:label="fragment_alimentos"
         tools:layout="@layout/fragment_alimentos" />
+    <fragment
+        android:id="@+id/prueba_Fragment"
+        android:name="com.example.lsm.Prueba_Fragment"
+        android:label="fragment_prueba_"
+        tools:layout="@layout/fragment_prueba_" >
+        <action
+            android:id="@+id/action_prueba_Fragment_pop"
+            app:popUpTo="@id/prueba_Fragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

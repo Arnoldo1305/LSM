@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
 
-class menu_Fragment : Fragment() {
+class Menu_Fragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class menu_Fragment : Fragment() {
             findNavController().navigate(R.id.action_menu_Fragment_self)
         }
         btnMenuToCategorias.setOnClickListener{
-            findNavController().navigate(R.id.action_menu_Fragment_to_abecedarioFragment)
+            findNavController().navigate(R.id.action_menu_Fragment_to_prueba_Fragment)
         }
         return root
     }
