@@ -3,4 +3,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="color_boton">#FF000000</color>
+    <color name="orange">#FF7700</color>
 </resources>

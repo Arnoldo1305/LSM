@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.example.lsm"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.example.lsm"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -50,6 +50,11 @@ android {
 }
 
 dependencies {
+
+    //NavComponent
+    val NavVersion = "2.7.0"
+    implementation("androidx.navigation:navigation-fragment-ktx:$NavVersion")
+    implementation("androidx.navigation:navigation-ui-ktx:$NavVersion")
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")

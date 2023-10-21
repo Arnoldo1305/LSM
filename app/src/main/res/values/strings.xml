@@ -22,4 +22,6 @@
     <string name="string_boton_diccionario">Diccionario</string>
     <string name="string_boton_traductor">Traductor</string>
     <string name="string_salir">Salir</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
