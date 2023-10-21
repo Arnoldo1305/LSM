@@ -11,10 +11,10 @@ class Abecedario : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_abecedario)
 
-        val volverBtn = findViewById<ImageView>(R.id.back_pressed)
-        val buscarBtn = findViewById<ImageView>(R.id.search_pressed)
+        val btnVolver = findViewById<ImageView>(R.id.back_pressed)
+        val btnBuscar = findViewById<ImageView>(R.id.search_pressed)
 
-        volverBtn.setOnClickListener{
+        btnVolver.setOnClickListener{
             val intent = Intent(this, ListaCategorias::class.java)
             startActivity(intent)
         }
