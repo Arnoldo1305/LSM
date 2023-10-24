@@ -29,9 +29,6 @@
             android:id="@+id/action_menu_Fragment_to_info_Fragment"
             app:destination="@id/info_Fragment" />
         <action
-            android:id="@+id/action_menu_Fragment_to_abecedarioFragment"
-            app:destination="@id/abecedarioFragment" />
-        <action
             android:id="@+id/action_menu_Fragment_to_prueba_Fragment"
             app:destination="@id/prueba_Fragment" />
     </fragment>

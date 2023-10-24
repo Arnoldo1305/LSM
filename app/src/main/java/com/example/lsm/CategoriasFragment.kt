@@ -10,6 +10,7 @@ import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
 
 class CategoriasFragment : Fragment() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -20,22 +21,16 @@ class CategoriasFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val root = inflater.inflate(R.layout.fragment_categorias, container, false)
-        val btnVolver = root.findViewById<Button>(R.id.back_pressed)
-        val abecedarioCard = root.findViewById<CardView>(R.id.abecedarioCard)
-        val alimentosCard = root.findViewById<CardView>(R.id.alimentosCard)
+        val btnCategoriasToAbecedario = root.findViewById<CardView>(R.id.abecedarioCard)
+        val btnCategoriasToAlimentos = root.findViewById<CardView>(R.id.alimentosCard)
 
-        btnVolver.setOnClickListener {
-            findNavController().navigate(R.id.action_menu_Fragment_self)
-        }
-
-        abecedarioCard.setOnClickListener {
+        btnCategoriasToAbecedario.setOnClickListener{
             findNavController().navigate(R.id.action_categoriasFragment_to_abecedarioFragment)
         }
-
-        alimentosCard.setOnClickListener {
+        btnCategoriasToAlimentos.setOnClickListener{
             findNavController().navigate(R.id.action_categoriasFragment_to_alimentosFragment2)
-
         }
         return root
     }
+
 }

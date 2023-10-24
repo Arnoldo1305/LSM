@@ -26,7 +26,7 @@ class Menu_Fragment : Fragment() {
             findNavController().navigate(R.id.action_menu_Fragment_self)
         }
         btnMenuToCategorias.setOnClickListener{
-            findNavController().navigate(R.id.action_menu_Fragment_to_prueba_Fragment)
+            findNavController().navigate(R.id.action_menu_Fragment_to_categoriasFragment)
         }
         return root
     }

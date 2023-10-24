@@ -1,15 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Prueba_Fragment"
-    android:background="@color/black">
+    tools:context=".Prueba_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <!-- Sección de boton atras y buscar -->
+    <RelativeLayout
+        android:id="@+id/barraMenu"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="?actionBarSize"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/abecedarioTitulo">
 
-</FrameLayout>
+        <ImageView
+            android:id="@+id/back_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:padding="15dp"
+            android:contentDescription="@string/string_btnVolver"
+            android:layout_centerVertical="true">
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/search_pressed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/baseline_search_24"
+            android:padding="15dp"
+            android:contentDescription="@string/string_btnBuscar"
+            android:layout_centerVertical="true"
+            android:layout_alignParentEnd="true">
+        </ImageView>
+
+    </RelativeLayout>
+
+    <!-- Aqui va el texto categoria -->
+    <TextView
+        android:id="@+id/abecedarioTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_name"
+        android:textSize="34sp"
+        android:textAllCaps="true"
+        android:layout_marginTop="10dp"
+        android:padding="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barraMenu">
+    </TextView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
