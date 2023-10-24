@@ -21,12 +21,16 @@ class Menu_Fragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_menu_, container, false)
         val btnNavigate = root.findViewById<Button>(R.id.btnNavegar)
         val btnMenuToCategorias = root.findViewById<Button>(R.id.btnMenuToCategorias)
+        val btnInfo = root.findViewById<Button>(R.id.btnInfo)
 
         btnNavigate.setOnClickListener{
             findNavController().navigate(R.id.action_menu_Fragment_self)
         }
         btnMenuToCategorias.setOnClickListener{
             findNavController().navigate(R.id.action_menu_Fragment_to_categoriasFragment)
+        }
+        btnInfo.setOnClickListener{
+            findNavController().navigate(R.id.action_menu_Fragment_to_info_Fragment)
         }
         return root
     }
