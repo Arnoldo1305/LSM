@@ -4,9 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Traductor_Fragment">
+    tools:context=".Traductor_Fragment"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
 
-    <!-- Aqui va el texto categoria -->
     <RelativeLayout
         android:id="@+id/barraMenu"
         android:layout_width="match_parent"
@@ -36,6 +37,7 @@
             android:padding="15dp"
             android:src="@drawable/baseline_search_24"></ImageView>
 
+
     </RelativeLayout>
 
     <TextView
@@ -48,5 +50,94 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginVertical="80dp">
     </TextView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="40dp"
+
+            >
+
+            <EditText
+                android:id="@+id/name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Ingrese el Texto" />
+
+            <ImageButton
+                android:id="@+id/btnEscuchar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_toLeftOf="@id/btnTraducir"
+                android:src="@drawable/baseline_mic_24"
+                app:backgroundTint="@null"
+                android:padding="12dp"
+                android:background="@drawable/buttom_traductor_style"
+                android:layout_marginEnd="5dp"/>
+
+            <Button
+                android:id="@+id/btnTraducir"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/name"
+                android:layout_alignParentRight="true"
+                android:text="Traducir"
+                android:textSize="17dp"
+                app:backgroundTint="@null"
+                android:background="@drawable/buttom_traductor_style"/>
+
+
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btnTraducir"
+                android:layout_alignParentRight="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+                    <ImageSwitcher
+                        android:layout_width="match_parent"
+                        android:layout_height="300dp"
+
+                        android:layout_marginTop="35dp"
+                        />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/abecedario" />
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/abecedario"/>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/abecedario"/>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/abecedario"/>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/abecedario"/>
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="50dp"
+                        android:src="@drawable/abecedario"/>
+                </LinearLayout>
+
+            </HorizontalScrollView>
+
+        </RelativeLayout>
+
 
 </FrameLayout>
