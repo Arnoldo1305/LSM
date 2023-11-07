@@ -61,7 +61,7 @@
             >
 
             <EditText
-                android:id="@+id/name"
+                android:id="@+id/txtEntrada"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="Ingrese el Texto" />
@@ -70,24 +70,26 @@
                 android:id="@+id/btnEscuchar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/name"
+                android:layout_below="@id/txtEntrada"
                 android:layout_toLeftOf="@id/btnTraducir"
                 android:src="@drawable/baseline_mic_24"
                 app:backgroundTint="@null"
                 android:padding="12dp"
                 android:background="@drawable/buttom_traductor_style"
-                android:layout_marginEnd="5dp"/>
+                android:layout_marginEnd="5dp"
+                android:onClick="ListarDatos"/>
 
             <Button
                 android:id="@+id/btnTraducir"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/name"
+                android:layout_below="@id/txtEntrada"
                 android:layout_alignParentRight="true"
                 android:text="Traducir"
                 android:textSize="17dp"
                 app:backgroundTint="@null"
-                android:background="@drawable/buttom_traductor_style"/>
+                android:background="@drawable/buttom_traductor_style"
+                />
 
 
 
@@ -107,37 +109,20 @@
 
                         android:layout_marginTop="35dp"
                         />
-
+                    <TextView
+                        android:id="@+id/lblSalida"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
                     <ImageView
                         android:layout_width="100dp"
                         android:layout_height="50dp"
                         android:src="@drawable/abecedario" />
 
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/abecedario"/>
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/abecedario"/>
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/abecedario"/>
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/abecedario"/>
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/abecedario"/>
+
                 </LinearLayout>
 
             </HorizontalScrollView>
 
         </RelativeLayout>
-
 
 </FrameLayout>
