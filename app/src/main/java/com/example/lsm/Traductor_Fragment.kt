@@ -1,5 +1,9 @@
 package com.example.lsm
 
+import android.content.Intent
+import android.speech.RecognizerIntent
+import android.app.Activity
+
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -49,6 +53,7 @@ class Traductor_Fragment : Fragment() {
 
         btnEscuchar.setOnClickListener {
             val datos = dbHelper.listarDatos()
+            startSpeechToText()
             if (datos.isNotEmpty()) {
                 val stringBuilder = StringBuilder()
                 for (dato in datos) {
@@ -61,6 +66,25 @@ class Traductor_Fragment : Fragment() {
         }
 
 
+
         return root
+    }
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+            val result = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)
+            if (result != null && result.isNotEmpty()) {
+                val recognizedText = result[0]
+                txtEntrada.setText(recognizedText)
+            }
+        }
+    }
+    private fun startSpeechToText() {
+        val speechIntent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        speechIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        speechIntent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Habla ahora")
+
+        startActivityForResult(speechIntent, 1)
     }
 }
