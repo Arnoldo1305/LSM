@@ -3,7 +3,6 @@ package com.example.lsm
 import android.content.Intent
 import android.speech.RecognizerIntent
 import android.app.Activity
-
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -14,6 +13,8 @@ import android.widget.EditText
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.navigation.fragment.findNavController
+import android.app.AlertDialog
+import android.content.Context
 
 class Traductor_Fragment : Fragment() {
     lateinit var txtEntrada: EditText
@@ -23,6 +24,7 @@ class Traductor_Fragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dbHelper = DataBase(requireContext())
+
     }
 
     override fun onCreateView(
@@ -42,33 +44,17 @@ class Traductor_Fragment : Fragment() {
         }
 
         btnTraducir.setOnClickListener {
-            val textoIngresado = txtEntrada.text.toString()
-            if (textoIngresado.isNotEmpty()) {
-                val palabra = Palabra()
-                palabra.señaImagen = ""
-                palabra.texto = textoIngresado
-                val resultado = dbHelper.insertarDatos(palabra)
-            }
+            val palabrasArray = dividirTextoEnArray(txtEntrada.text.toString())
+            mostrarResultadosEnAlert(requireContext(), palabrasArray)
         }
 
         btnEscuchar.setOnClickListener {
-            val datos = dbHelper.listarDatos()
             startSpeechToText()
-            if (datos.isNotEmpty()) {
-                val stringBuilder = StringBuilder()
-                for (dato in datos) {
-                    stringBuilder.append("ID: ${dato.id}, Texto: ${dato.texto}\n")
-                }
-                lblSalida.text = stringBuilder.toString()
-            } else {
-                lblSalida.text = "No hay datos disponibles en la base de datos."
-            }
+            traerDatos()
         }
-
-
-
         return root
     }
+
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
@@ -77,6 +63,8 @@ class Traductor_Fragment : Fragment() {
             if (result != null && result.isNotEmpty()) {
                 val recognizedText = result[0]
                 txtEntrada.setText(recognizedText)
+                //subirDatos()
+                //txtEntrada.setText("")
             }
         }
     }
@@ -86,5 +74,42 @@ class Traductor_Fragment : Fragment() {
         speechIntent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Habla ahora")
 
         startActivityForResult(speechIntent, 1)
+    }
+    fun subirDatos(){
+        val textoIngresado = txtEntrada.text.toString()
+        if (textoIngresado.isNotEmpty()) {
+            val palabra = Palabra()
+            palabra.imagen = ""
+            palabra.texto = textoIngresado
+            val resultado = dbHelper.insertarDatos(palabra)
+        }
+    }
+    private fun traerDatos(){
+        val datos = dbHelper.listarDatos()
+        if (datos.isNotEmpty()) {
+            val stringBuilder = StringBuilder()
+            for (dato in datos) {
+                stringBuilder.append("Texto: ${dato.texto}, Imagen: ${dato.imagen}\n ")
+            }
+            lblSalida.text = stringBuilder.toString()
+        } else {
+            lblSalida.text = "No hay datos disponibles en la base de datos."
+        }
+    }
+    private fun dividirTextoEnArray(texto: String): Array<String> {
+        // Dividir el texto en palabras usando espacios en blanco como delimitador
+        val palabras = texto.split(Regex("\\s+")).toTypedArray()
+        return palabras
+    }
+    fun mostrarResultadosEnAlert(context: Context, resultados: Array<String>) {
+        val alertDialog = AlertDialog.Builder(context)
+        alertDialog.setTitle("Resultados")
+        val mensaje = resultados.joinToString("\n") // Unir las palabras con saltos de línea
+        alertDialog.setMessage(mensaje)
+        alertDialog.setPositiveButton("Aceptar") { dialog, _ ->
+            dialog.dismiss()
+        }
+        val dialog = alertDialog.create()
+        dialog.show()
     }
 }

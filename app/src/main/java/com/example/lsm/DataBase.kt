@@ -1,19 +1,21 @@
 package com.example.lsm
 
-import android.annotation.SuppressLint
-import android.content.ContentUris
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+
 
 val BD = "baseDatos"
 val tabla="Palabra"
 
 class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
     override fun onCreate(db: SQLiteDatabase?) {
-        val createTableSQL = "CREATE TABLE $tabla (id INTEGER PRIMARY KEY AUTOINCREMENT, señaImagen VARCHAR(250), texto VARCHAR(250))"
+        val createTableSQL = "CREATE TABLE $tabla (id INTEGER PRIMARY KEY AUTOINCREMENT, imagen VARCHAR(250), texto VARCHAR(250))"
+        //val insertData = " INSERT INTO $tabla(id,imagen,texto) VALUES (1,'app/src/main/res/señas/A.PNG','A')"
+
         db?.execSQL(createTableSQL)
+        //db?.execSQL(insertData)
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
@@ -23,7 +25,7 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
     fun insertarDatos(palabra: Palabra): String {
         val db = this.writableDatabase
         val contenedor = ContentValues().apply {
-            put("señaImagen", palabra.señaImagen)
+            put("imagen", palabra.imagen)
             put("texto", palabra.texto)
         }
         var resultado = db.insert(tabla, null, contenedor)
@@ -45,7 +47,7 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
             do {
                 var palabra = Palabra()
                 palabra.id = resultado.getString(resultado.getColumnIndex("id")).toInt()
-                palabra.señaImagen = resultado.getString(resultado.getColumnIndex("señaImagen"))
+                palabra.imagen = resultado.getString(resultado.getColumnIndex("imagen"))
                 palabra.texto = resultado.getString(resultado.getColumnIndex("texto"))
                 lista.add(palabra)
             } while (resultado.moveToNext())
@@ -56,10 +58,10 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
         return lista
     }
 
-    fun actualizarDatos(id:String,señaImagen:String,texto:String):String{
+    fun actualizarDatos(id:String,imagen:String,texto:String):String{
         val db=this.writableDatabase
         var contenedor= ContentValues();
-        contenedor.put("señaImagen",señaImagen)
+        contenedor.put("imagen",imagen)
         contenedor.put("texto",texto)
         var resultado= db.update(tabla,contenedor,"id=?", arrayOf(id))
         if (resultado>0){
@@ -79,5 +81,13 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
         }else{
             return "No se pudo Ejecutar"
         }
+    }
+    fun existeRegistro(id: Int): Boolean {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM Palabra WHERE id = ?", arrayOf(id.toString()))
+        val existe = cursor.count > 0
+        cursor.close()
+        db.close()
+        return existe
     }
 }

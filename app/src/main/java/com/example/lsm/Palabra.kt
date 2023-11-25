@@ -2,11 +2,11 @@ package com.example.lsm
 
 class Palabra {
     var id:Int=0
-    var señaImagen:String=""
+    var imagen:String=""
     var texto:String=""
 
     constructor(señaImagen:String,texto:String){
-        this.señaImagen=señaImagen
+        this.imagen=imagen
         this.texto=texto
     }
     constructor(){
