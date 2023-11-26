@@ -89,7 +89,7 @@ class Traductor_Fragment : Fragment() {
         if (datos.isNotEmpty()) {
             val stringBuilder = StringBuilder()
             for (dato in datos) {
-                stringBuilder.append("Texto: ${dato.texto}, Imagen: ${dato.imagen}\n ")
+                stringBuilder.append("id: ${dato.id}, Texto: ${dato.texto}, Imagen: ${dato.imagen}, desc.: ${dato.descripcion}\n ")
             }
             lblSalida.text = stringBuilder.toString()
         } else {

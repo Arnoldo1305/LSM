@@ -21,9 +21,13 @@ class Menu_Fragment : Fragment() {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     val apiService = retrofit.create(ApiService::class.java)
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dbHelper = DataBase(requireContext())
+        val id2 = 1
+        obtenerCategorias(id2)
         val id = 1 // Ajusta el ID según tus necesidades
         obtenerDatos(id)
 
@@ -78,6 +82,34 @@ class Menu_Fragment : Fragment() {
             })
         } else {
             obtenerDatos(id + 1)
+        }
+    }
+
+    fun obtenerCategorias(id2: Int) {
+        if (!dbHelper.existeCategoria(id2)) {
+            val call = apiService.obtenerCategorias(id2)
+
+            call.enqueue(object : Callback<Categorias> {
+                override fun onResponse(call: Call<Categorias>, response: Response<Categorias>) {
+                    if (response.isSuccessful) {
+                        val categorias = response.body()
+                        if (categorias != null) {
+                            if (!dbHelper.existeCategoria(id2)) {
+                                dbHelper.insertarCategorias(categorias)
+                            }
+                            obtenerCategorias(id2 + 1)
+                        } else {
+
+                        }
+                    } else {
+                        // Manejar errores de la respuesta HTTP
+                    }
+                }
+                override fun onFailure(call: Call<Categorias>, t: Throwable) {
+                }
+            })
+        } else {
+            obtenerCategorias(id2 + 1)
         }
     }
 }
