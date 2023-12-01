@@ -51,78 +51,81 @@
         android:layout_marginVertical="80dp">
     </TextView>
 
-        <RelativeLayout
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:padding="10dp"
+
+        >
+
+        <EditText
+            android:id="@+id/txtEntrada"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:hint="Ingrese el Texto" />
 
-            >
+        <ImageButton
+            android:id="@+id/btnEscuchar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtEntrada"
+            android:layout_marginEnd="5dp"
+            android:layout_toLeftOf="@id/btnTraducir"
+            android:background="@drawable/buttom_traductor_style"
+            android:onClick="ListarDatos"
+            android:padding="12dp"
+            android:src="@drawable/baseline_mic_24"
+            app:backgroundTint="@null" />
 
-            <EditText
-                android:id="@+id/txtEntrada"
+        <Button
+            android:id="@+id/btnTraducir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtEntrada"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/buttom_traductor_style"
+            android:text="Traducir"
+            android:textSize="17dp"
+            app:backgroundTint="@null" />
+
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/btnTraducir"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="0dp"
+            android:layout_marginRight="9dp">
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Ingrese el Texto" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
-            <ImageButton
-                android:id="@+id/btnEscuchar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txtEntrada"
-                android:layout_toLeftOf="@id/btnTraducir"
-                android:src="@drawable/baseline_mic_24"
-                app:backgroundTint="@null"
-                android:padding="12dp"
-                android:background="@drawable/buttom_traductor_style"
-                android:layout_marginEnd="5dp"
-                android:onClick="ListarDatos"/>
-
-            <Button
-                android:id="@+id/btnTraducir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/txtEntrada"
-                android:layout_alignParentRight="true"
-                android:text="Traducir"
-                android:textSize="17dp"
-                app:backgroundTint="@null"
-                android:background="@drawable/buttom_traductor_style"
-                />
-
-
-
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/btnTraducir"
-                android:layout_alignParentRight="true">
-                <LinearLayout
+                <ImageSwitcher
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical">
-                    <ImageSwitcher
-                        android:layout_width="match_parent"
-                        android:layout_height="300dp"
+                    android:layout_height="300dp"
 
-                        android:layout_marginTop="35dp"
-                        />
-                    <TextView
-                        android:id="@+id/lblSalida"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
-                    <ImageView
-                        android:layout_width="100dp"
-                        android:layout_height="50dp"
-                        android:src="@drawable/abecedario" />
+                    android:layout_marginTop="35dp" />
+
+                <TextView
+                    android:id="@+id/lblSalida"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/abecedario" />
 
 
-                </LinearLayout>
+            </LinearLayout>
 
-            </HorizontalScrollView>
+        </HorizontalScrollView>
 
-        </RelativeLayout>
+    </RelativeLayout>
 
 </FrameLayout>

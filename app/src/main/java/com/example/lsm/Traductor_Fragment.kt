@@ -45,7 +45,8 @@ class Traductor_Fragment : Fragment() {
 
         btnTraducir.setOnClickListener {
             val palabrasArray = dividirTextoEnArray(txtEntrada.text.toString())
-            mostrarResultadosEnAlert(requireContext(), palabrasArray)
+            traducirPalabras(palabrasArray)
+
         }
 
         btnEscuchar.setOnClickListener {
@@ -63,8 +64,6 @@ class Traductor_Fragment : Fragment() {
             if (result != null && result.isNotEmpty()) {
                 val recognizedText = result[0]
                 txtEntrada.setText(recognizedText)
-                //subirDatos()
-                //txtEntrada.setText("")
             }
         }
     }
@@ -96,11 +95,6 @@ class Traductor_Fragment : Fragment() {
             lblSalida.text = "No hay datos disponibles en la base de datos."
         }
     }
-    private fun dividirTextoEnArray(texto: String): Array<String> {
-        // Dividir el texto en palabras usando espacios en blanco como delimitador
-        val palabras = texto.split(Regex("\\s+")).toTypedArray()
-        return palabras
-    }
     fun mostrarResultadosEnAlert(context: Context, resultados: Array<String>) {
         val alertDialog = AlertDialog.Builder(context)
         alertDialog.setTitle("Resultados")
@@ -112,4 +106,19 @@ class Traductor_Fragment : Fragment() {
         val dialog = alertDialog.create()
         dialog.show()
     }
+    private fun dividirTextoEnArray(texto: String): Array<String> {
+        // Dividir el texto en palabras usando espacios en blanco como delimitador
+        val palabras = texto.split(Regex("\\s+")).toTypedArray()
+        return palabras.map { convertirAMayusculas(it) }.toTypedArray()
+    }
+    private fun convertirAMayusculas(palabra: String): String {
+        // Convertir la palabra a mayúsculas
+        return palabra.uppercase()
+    }
+    private fun traducirPalabras(texto: Array<String>){
+        val rutas = dbHelper.obtenerPalabras(texto)
+        mostrarResultadosEnAlert(requireContext(), rutas)
+
+    }
+
 }

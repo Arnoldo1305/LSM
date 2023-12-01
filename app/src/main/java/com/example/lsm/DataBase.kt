@@ -131,7 +131,29 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
         val cursor = db.rawQuery("SELECT * FROM Categorias WHERE id = ?", arrayOf(id.toString()))
         val existe = cursor.count > 0
         cursor.close()
-        //db.close()
+        db.close()
         return existe
     }
+
+    fun obtenerPalabras(textos: Array<String>): Array<String> {
+        val palabras = mutableListOf<String>()
+        val db = this.readableDatabase
+        if (textos.isNotEmpty()) {
+            val placeholders = Array(textos.size) { "?" }.joinToString(", ")
+            val sql = "SELECT * FROM Palabra WHERE texto IN ($placeholders)"
+            val cursor = db.rawQuery(sql, textos)
+
+            if (cursor.moveToFirst()) {
+                do {
+                    val columnaTexto = cursor.getString(cursor.getColumnIndex("imagen"))
+                    palabras.add(columnaTexto)
+                } while (cursor.moveToNext())
+            }
+
+            cursor.close()
+        }
+
+        return palabras.toTypedArray()
+    }
+
 }
