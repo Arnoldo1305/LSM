@@ -197,7 +197,7 @@
                         android:layout_height="70dp"
                         android:id="@+id/animalesImagen"
                         android:contentDescription="@string/string_btnAnimales"
-                        android:src="@drawable/abecedario"
+                        android:src="@drawable/animales"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true">
                     </ImageView>

@@ -10,6 +10,7 @@
     <string name="string_btnColores">imgColores</string>
     <string name="string_btnAlimentos">imgAlimentos</string>
     <string name="string_btnNumeros">imgNumeros</string>
+    <string name="string_imgPalabras">imgPalabras</string>
 
     <string name="abecedario_titulo">Abecedario</string>
     <string name="animales_titulo">Animales</string>
@@ -17,6 +18,8 @@
     <string name="colores_titulo">Colores</string>
     <string name="alimentos_titulo">Alimentos</string>
     <string name="numeros_titulo">Números</string>
+    <string name="palabras_titulo">Palabras</string>
+    <string name="descripcion_palabra">Descripcion</string>
 
     <string name="string_main_titulo">Lenguaje de Señas Mexicanas</string>
     <string name="string_boton_diccionario">Diccionario</string>

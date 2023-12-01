@@ -52,8 +52,6 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
 
     }
 
-
-
     fun listarDatos(): List<Palabra> {
         var lista: MutableList<Palabra> = ArrayList()
         val db = this.readableDatabase
@@ -75,6 +73,7 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
         }
         return lista
     }
+
     fun listarCategorias(): List<Categorias> {
         var lista: MutableList<Categorias> = ArrayList()
         val db = this.readableDatabase

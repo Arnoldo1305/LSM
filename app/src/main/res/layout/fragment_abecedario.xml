@@ -44,14 +44,28 @@
         android:id="@+id/abecedarioTitulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/abecedario_titulo"
-        android:textSize="34sp"
-        android:textAllCaps="true"
         android:layout_marginTop="10dp"
         android:padding="10dp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:text="@string/abecedario_titulo"
+        android:textAllCaps="true"
+        android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/barraMenu">
-    </TextView>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/barraMenu"></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/abecedarioTitulo">
+
+        <ListView
+            android:id="@+id/lvDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
