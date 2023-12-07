@@ -119,7 +119,7 @@
                 <ImageView
                     android:layout_width="100dp"
                     android:layout_height="50dp"
-                    android:src="@drawable/abecedario" />
+                    android:src="@drawable/buttom_traductor_style" />
 
 
             </LinearLayout>

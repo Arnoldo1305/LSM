@@ -16,8 +16,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/menuNavBar"
-        android:gravity="center"
-        >
+        android:gravity="center">
 
         <TextView
             android:layout_width="wrap_content"
@@ -73,6 +72,11 @@
             android:shadowRadius="10"
             android:drawableRight="@drawable/baseline_info_24"></Button>
 
+        <TextView
+            android:id="@+id/txtPrueba"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
 
 
     </LinearLayout>

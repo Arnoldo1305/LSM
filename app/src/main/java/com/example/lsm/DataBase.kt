@@ -11,6 +11,7 @@ val tabla="Palabra"
 val tablaCat= "Categorias"
 
 class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
+
     override fun onCreate(db: SQLiteDatabase?) {
         val createTableCat = "CREATE TABLE $tablaCat (id INTEGER PRIMARY KEY AUTOINCREMENT, categoria VARCHAR(250))"
         val createTableSQL = "CREATE TABLE $tabla (id INTEGER PRIMARY KEY AUTOINCREMENT, imagen VARCHAR(250), texto VARCHAR(250), id_categoria INTEGER,descripcion VARCHAR(255), FOREIGN KEY (id_categoria) REFERENCES Categorias(id))"
@@ -21,11 +22,10 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
     }
-
     fun insertarDatos(palabra: Palabra): String {
         val db = this.writableDatabase
         val contenedor = ContentValues().apply {
-            put("imagen", palabra.imagen)
+            put("imagen", "${palabra.texto.lowercase()}.webp")
             put("texto", palabra.texto)
             put("id_categoria", palabra.id_categoria)
             put("descripcion", palabra.descripcion)
@@ -129,6 +129,14 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
     fun existeCategoria(id: Int): Boolean {
         val db = this.readableDatabase
         val cursor = db.rawQuery("SELECT * FROM Categorias WHERE id = ?", arrayOf(id.toString()))
+        val existe = cursor.count > 0
+        cursor.close()
+        db.close()
+        return existe
+    }
+    fun existeRuta(id: Int): Boolean {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT imagen FROM Palabra WHERE id = ?", arrayOf(id.toString()))
         val existe = cursor.count > 0
         cursor.close()
         db.close()

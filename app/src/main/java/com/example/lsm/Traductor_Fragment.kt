@@ -120,5 +120,8 @@ class Traductor_Fragment : Fragment() {
         mostrarResultadosEnAlert(requireContext(), rutas)
 
     }
+    private fun crearImagenes(){
+        
+    }
 
 }
