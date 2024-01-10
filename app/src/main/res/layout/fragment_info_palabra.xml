@@ -57,12 +57,13 @@
         android:id="@+id/txtDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/descripcion_palabra"
-        android:textSize="24sp"
-        app:layout_constraintTop_toBottomOf="@+id/imgPalabra"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"/>
+        android:layout_marginBottom="20dp"
+        android:text="@string/descripcion_palabra"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPalabra" />
 </androidx.constraintlayout.widget.ConstraintLayout>

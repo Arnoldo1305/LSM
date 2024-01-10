@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.ListView
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 
@@ -28,6 +29,7 @@ class AbecedarioFragment : Fragment() {
         //val descripcion = traerDatosDescripcion()
         val lvDatos = root.findViewById<ListView>(R.id.lvDatos)
         val btnVolver = root.findViewById<ImageView>(R.id.btnVolver)
+        val searchView = root.findViewById<SearchView>(R.id.searchView)
 
         arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1,palabras)
         lvDatos.adapter = arrayAdapter
@@ -47,6 +49,17 @@ class AbecedarioFragment : Fragment() {
         btnVolver.setOnClickListener{
             findNavController().popBackStack()
         }
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                arrayAdapter.filter.filter(newText)
+                return true
+            }
+        })
 
         return root
     }
