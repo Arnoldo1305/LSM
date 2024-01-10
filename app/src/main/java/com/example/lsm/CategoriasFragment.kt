@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.cardview.widget.CardView
 import androidx.navigation.fragment.findNavController
 
@@ -23,12 +24,17 @@ class CategoriasFragment : Fragment() {
         val root = inflater.inflate(R.layout.fragment_categorias, container, false)
         val btnCategoriasToAbecedario = root.findViewById<CardView>(R.id.abecedarioCard)
         val btnCategoriasToAlimentos = root.findViewById<CardView>(R.id.alimentosCard)
+        val btnVolver = root.findViewById<ImageView>(R.id.btnVolver)
 
         btnCategoriasToAbecedario.setOnClickListener{
             findNavController().navigate(R.id.action_categoriasFragment_to_abecedarioFragment)
         }
         btnCategoriasToAlimentos.setOnClickListener{
             findNavController().navigate(R.id.action_categoriasFragment_to_alimentosFragment2)
+        }
+
+        btnVolver.setOnClickListener{
+            findNavController().popBackStack()
         }
         return root
     }

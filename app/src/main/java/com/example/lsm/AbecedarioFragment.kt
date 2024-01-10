@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
 import android.widget.ListView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -26,6 +27,7 @@ class AbecedarioFragment : Fragment() {
         val palabras = traerDatosPalabras()
         //val descripcion = traerDatosDescripcion()
         val lvDatos = root.findViewById<ListView>(R.id.lvDatos)
+        val btnVolver = root.findViewById<ImageView>(R.id.btnVolver)
 
         arrayAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1,palabras)
         lvDatos.adapter = arrayAdapter
@@ -38,8 +40,14 @@ class AbecedarioFragment : Fragment() {
                 putString("palabra", palabra)
                 putString("descripcion", descripcion)
             }
+
             findNavController().navigate(R.id.action_abecedarioFragment_to_infoPalabraFragment, bundle)
         }
+
+        btnVolver.setOnClickListener{
+            findNavController().popBackStack()
+        }
+
         return root
     }
 
