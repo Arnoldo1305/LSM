@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".InfoPalabraFragment">
 
-    <!-- Sección de boton atras y buscar -->
+    <!-- Sección de boton atras -->
     <RelativeLayout
         android:id="@+id/barraMenu"
         android:layout_width="match_parent"

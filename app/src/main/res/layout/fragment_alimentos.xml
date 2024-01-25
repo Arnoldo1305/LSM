@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AlimentosFragment">
 
-    <!-- Sección de boton atras y buscar -->
+    <!-- Sección de boton atras -->
     <RelativeLayout
         android:id="@+id/barraMenu"
         android:layout_width="match_parent"
@@ -26,17 +26,6 @@
             android:layout_centerVertical="true">
         </ImageView>
 
-        <ImageView
-            android:id="@+id/search_pressed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_search_24"
-            android:padding="15dp"
-            android:contentDescription="@string/string_btnBuscar"
-            android:layout_centerVertical="true"
-            android:layout_alignParentEnd="true">
-        </ImageView>
-
     </RelativeLayout>
 
     <!-- Aqui va el texto categoria -->
@@ -53,5 +42,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barraMenu">
     </TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/alimentosTitulo">
+
+        <!-- Sección de boton atras -->
+        <SearchView
+            android:id="@+id/searchView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            app:iconifiedByDefault="false"
+            app:queryHint="Buscar" />
+
+        <ListView
+            android:id="@+id/lvDatos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:choiceMode="singleChoice" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

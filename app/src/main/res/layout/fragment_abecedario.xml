@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".AbecedarioFragment">
 
-    <!-- Sección de boton atras y buscar -->
+    <!-- Sección de boton atras -->
     <RelativeLayout
         android:id="@+id/barraMenu"
         android:layout_width="match_parent"
@@ -25,7 +25,6 @@
             android:contentDescription="@string/string_btnVolver"
             android:layout_centerVertical="true">
         </ImageView>
-
 
     </RelativeLayout>
 
@@ -53,6 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/abecedarioTitulo">
 
+        <!-- Sección de boton atras -->
         <SearchView
             android:id="@+id/searchView"
             android:layout_width="match_parent"
