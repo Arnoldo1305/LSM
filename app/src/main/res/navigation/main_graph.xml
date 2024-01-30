@@ -77,6 +77,9 @@
             app:popUpTo="@id/abecedarioFragment"
             app:popUpToInclusive="true"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_abecedarioFragment_to_infoPalabraFragment"
+            app:destination="@id/infoPalabraFragment" />
     </fragment>
     <fragment
         android:id="@+id/alimentosFragment2"
@@ -88,5 +91,13 @@
             app:popUpTo="@id/alimentosFragment2"
             app:popUpToInclusive="true"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_alimentosFragment2_to_infoPalabraFragment"
+            app:destination="@id/infoPalabraFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/infoPalabraFragment"
+        android:name="com.example.lsm.InfoPalabraFragment"
+        android:label="fragment_info_palabra"
+        tools:layout="@layout/fragment_info_palabra" />
 </navigation>

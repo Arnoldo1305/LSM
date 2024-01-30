@@ -1,37 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center"
     tools:context=".InfoPalabraFragment">
+
+    <!-- Sección de boton atras -->
+    <RelativeLayout
+        android:id="@+id/barraMenu"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/txtPalabra"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:contentDescription="@string/string_btnVolver"
+            android:padding="15dp"
+            android:src="@drawable/baseline_arrow_back_24" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/txtPalabra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="20dp"
         android:text="@string/palabras_titulo"
-        android:textSize="48sp" />
+        android:textSize="48sp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/imgPalabra"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
 
     <ImageView
         android:id="@+id/imgPalabra"
         android:layout_width="202dp"
         android:layout_height="169dp"
         android:contentDescription="@string/string_imgPalabras"
-        android:layout_gravity="center_horizontal"
-        android:layout_margin="200dp"
-        android:src="@drawable/baseline_arrow_back_24"
-        app:srcCompat="@drawable/animales" />
+        android:src="@drawable/animales"
+        app:layout_constraintTop_toBottomOf="@id/txtPalabra"
+        app:layout_constraintBottom_toTopOf="@id/txtDescripcion"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:id="@+id/txtDescripcion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:text="@string/descripcion_palabra"
-        android:textSize="24sp" />
-</FrameLayout>
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgPalabra" />
+</androidx.constraintlayout.widget.ConstraintLayout>
