@@ -33,17 +33,6 @@
                 android:layout_centerVertical="true">
             </ImageView>
 
-            <ImageView
-                android:id="@+id/search_pressed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/baseline_search_24"
-                android:padding="15dp"
-                android:contentDescription="@string/string_btnBuscar"
-                android:layout_centerVertical="true"
-                android:layout_alignParentEnd="true">
-            </ImageView>
-
         </RelativeLayout>
 
         <!-- Aqui va el texto categoria -->

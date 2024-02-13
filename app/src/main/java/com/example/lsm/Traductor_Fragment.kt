@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import android.app.AlertDialog
 import android.content.Context
+import android.widget.ImageView
 
 class Traductor_Fragment : Fragment() {
     lateinit var txtEntrada: EditText
@@ -33,14 +34,14 @@ class Traductor_Fragment : Fragment() {
     ): View? {
 
         val root = inflater.inflate(R.layout.fragment_traductor_, container, false)
-        val btnBack = root.findViewById<Button>(R.id.btnBack)
+        val btnBack = root.findViewById<ImageView>(R.id.btnVolver)
         val btnTraducir = root.findViewById<Button>(R.id.btnTraducir)
         val btnEscuchar = root.findViewById<ImageButton>(R.id.btnEscuchar)
         txtEntrada = root.findViewById(R.id.txtEntrada)
         lblSalida = root.findViewById(R.id.lblSalida)
 
         btnBack.setOnClickListener {
-            findNavController().navigate(R.id.action_traductor_Fragment_pop)
+            findNavController().popBackStack()
         }
 
         btnTraducir.setOnClickListener {
