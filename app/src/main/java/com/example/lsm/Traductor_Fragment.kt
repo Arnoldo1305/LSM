@@ -64,6 +64,8 @@ class Traductor_Fragment : Fragment() {
             if (result != null && result.isNotEmpty()) {
                 val recognizedText = result[0]
                 txtEntrada.setText(recognizedText)
+                val palabrasArray = dividirTextoEnArray(txtEntrada.text.toString())
+                traducirPalabras(palabrasArray)
             }
         }
     }
