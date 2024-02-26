@@ -50,7 +50,6 @@ class Menu_Fragment : Fragment() {
         val btnMenuToCategorias = root.findViewById<Button>(R.id.btnMenuToCategorias)
         val btnInfo = root.findViewById<Button>(R.id.btnInfo)
         val btnSalir = root.findViewById<Button>(R.id.btnSalir)
-        txtPrueba = root.findViewById(R.id.txtPrueba)
 
         btnNavigate.setOnClickListener{
             findNavController().navigate(R.id.action_menu_Fragment_self)
@@ -64,7 +63,6 @@ class Menu_Fragment : Fragment() {
         btnSalir.setOnClickListener{
             findNavController().navigate(R.id.action_menu_Fragment_pop)
         }
-        mostrarRutas()
         return root
     }
 
@@ -79,7 +77,7 @@ class Menu_Fragment : Fragment() {
                             if (!dbHelper.existeRegistro(id)) {
                                 obtenerRutas(palabra.imagen)
 
-                                dbHelper.insertarDatos(palabra)
+                                dbHelper.insertarDatos(requireContext(),palabra)
                             }
                             obtenerDatos(id + 1)
                         } else {
@@ -101,14 +99,7 @@ class Menu_Fragment : Fragment() {
         listRutas.add(imagen)
         Log.d("obtenerrutas", listRutas.toString())
     }
-    fun mostrarRutas(){
-        Log.d("pruebarutas", listRutas.toString())
-        if (listRutas.isNotEmpty()) {
-            txtPrueba.text = listRutas.toString()
-        } else {
-            txtPrueba.text = "La lista de rutas está vacía."
-        }
-    }
+
 
     fun obtenerCategorias(id2: Int) {
         if (!dbHelper.existeCategoria(id2)) {

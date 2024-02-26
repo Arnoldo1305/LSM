@@ -5,6 +5,7 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
+import android.widget.Toast
 
 
 val BD = "baseDatos"
@@ -23,10 +24,10 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
     }
-    fun insertarDatos(palabra: Palabra): String {
+    fun insertarDatos(contexto: Context, palabra: Palabra): String {
         val db = this.writableDatabase
         val contenedor = ContentValues().apply {
-            put("imagen", "${palabra.texto.lowercase()}.webp")
+            put("imagen", palabra.imagen)
             put("texto", palabra.texto)
             put("id_categoria", palabra.id_categoria)
             put("descripcion", palabra.descripcion)
@@ -35,10 +36,11 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
         if (resultado == -1.toLong()) {
             return "existio una falla en la base de datos"
         } else {
+            Toast.makeText(contexto, "¡La base de datos se ha actualizado correctamente!", Toast.LENGTH_SHORT).show()
             return "Insert (ok)"
         }
-
     }
+
     fun insertarCategorias(categorias: Categorias): String {
         val db = this.writableDatabase
         val contenedor = ContentValues().apply {
@@ -124,7 +126,6 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
         val cursor = db.rawQuery("SELECT * FROM Palabra WHERE id = ?", arrayOf(id.toString()))
         val existe = cursor.count > 0
         cursor.close()
-        //db.close()
         return existe
     }
     fun existeCategoria(id: Int): Boolean {
@@ -144,32 +145,10 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
         return existe
     }
 
-    fun obtenerPalabras(textos: Array<String>): Array<String> {
-        val palabras = mutableListOf<String>()
-        val db = this.readableDatabase
-        if (textos.isNotEmpty()) {
-            val placeholders = Array(textos.size) { "?" }.joinToString(", ")
-            val sql = "SELECT imagen FROM Palabra WHERE texto IN ($placeholders)"
-            val cursor = db.rawQuery(sql, textos)
-
-            if (cursor.moveToFirst()) {
-                do {
-                    val columnaTexto = cursor.getString(cursor.getColumnIndex("imagen"))
-                    palabras.add(columnaTexto)
-                    Log.d("ObtenerPalabras", "Palabra obtenida: $columnaTexto")
-                } while (cursor.moveToNext())
-            }
-
-            cursor.close()
-        }
-        return palabras.toTypedArray()
-    }
-
     fun obtenerImagenTraducida(textos: Array<String>): Array<String> {
         val palabras = mutableListOf<String>()
         val db = this.readableDatabase
 
-        // Verificar que la lista no este vacia
         if (textos.isNotEmpty()) {
             // consulta
             val placeholders = Array(textos.size) { "?" }.joinToString(", ")

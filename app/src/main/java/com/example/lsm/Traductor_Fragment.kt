@@ -1,6 +1,7 @@
 package com.example.lsm
 
 import android.content.Intent
+import android.webkit.WebSettings
 import android.speech.RecognizerIntent
 import android.app.Activity
 import android.os.Bundle
@@ -46,6 +47,13 @@ class Traductor_Fragment : Fragment() {
         lblSalida = root.findViewById(R.id.lblSalida)
         webView = root.findViewById(R.id.webView)
         val webView: WebView = root.findViewById(R.id.webView)
+        val webSettings: WebSettings = webView.settings
+        webSettings.loadWithOverviewMode = false
+        webSettings.useWideViewPort = false
+        webSettings.setSupportZoom(false)
+        webSettings.builtInZoomControls = false
+        webSettings.displayZoomControls = false
+        webView.setInitialScale(180)
 
 
         btnBack.setOnClickListener {
@@ -95,7 +103,7 @@ class Traductor_Fragment : Fragment() {
             val palabra = Palabra()
             palabra.imagen = ""
             palabra.texto = textoIngresado
-            val resultado = dbHelper.insertarDatos(palabra)
+            val resultado = dbHelper.insertarDatos(requireContext(),palabra)
         }
     }
     private fun traerDatos(){
@@ -133,20 +141,20 @@ class Traductor_Fragment : Fragment() {
 
     private fun traducirPalabras(texto: Array<String>) {
         val rutas = dbHelper.obtenerImagenTraducida(texto)
+
         Log.d("Traducción", "Rutas obtenidas: ${rutas.joinToString(", ")}")
         val html = StringBuilder()
         html.append("<div style='display: flex;'>")
 
         for (ruta in rutas) {
-            html.append("<img src=\"$ruta\" style='margin-right: 10px;' />")
+            html.append("<img src=\"$ruta\" style='margin-right: 10px; max-width: 100%; height: auto; display: flex; justify-content: center;' />")
         }
+
         html.append("</div>")
+
         val htmlData = html.toString()
         webView.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null)
     }
 
-    private fun crearImagenes(){
-        
-    }
 
 }

@@ -42,8 +42,8 @@ android:paddingRight="16dp">
 </TextView>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="571dp"
+        android:layout_width="409dp"
+        android:layout_height="652dp"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:padding="10dp"
@@ -54,6 +54,12 @@ android:paddingRight="16dp">
             android:id="@+id/txtEntrada"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="53dp"
+            android:layout_marginEnd="30dp"
             android:hint="Ingrese el Texto" />
 
         <ImageButton
@@ -74,7 +80,9 @@ android:paddingRight="16dp">
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtEntrada"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_marginEnd="30dp"
             android:background="@drawable/buttom_traductor_style"
             android:text="Traducir"
             android:textSize="17dp"
@@ -82,14 +90,14 @@ android:paddingRight="16dp">
 
         <WebView
             android:id="@+id/webView"
-            android:layout_width="326dp"
-            android:layout_height="338dp"
+            android:layout_width="340dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btnEscuchar"
             android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="162dp"
-            android:layout_marginEnd="21dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="51dp"
+            android:layout_marginEnd="10dp"
             tools:ignore="WebViewLayout">
 
             <TextView
