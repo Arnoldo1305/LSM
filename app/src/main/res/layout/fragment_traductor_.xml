@@ -1,49 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".Traductor_Fragment"
+android:paddingLeft="16dp"
+android:paddingRight="16dp">
+
+<!-- Sección de boton atras -->
+<RelativeLayout
+    android:id="@+id/barraMenu"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".Traductor_Fragment"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    android:layout_height="?actionBarSize"
+    android:orientation="vertical"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintBottom_toTopOf="@+id/abecedarioTitulo">
 
-    <!-- Sección de boton atras -->
-    <RelativeLayout
-        android:id="@+id/barraMenu"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/abecedarioTitulo">
-
-        <ImageView
-            android:id="@+id/btnVolver"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/baseline_arrow_back_24"
-            android:padding="15dp"
-            android:contentDescription="@string/string_btnVolver"
-            android:layout_centerVertical="true">
-        </ImageView>
-
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/abecedarioTitulo"
+    <ImageView
+        android:id="@+id/btnVolver"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Traductor"
-        android:textSize="34sp"
-        android:textAllCaps="true"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginVertical="80dp">
-    </TextView>
+        android:src="@drawable/baseline_arrow_back_24"
+        android:padding="15dp"
+        android:contentDescription="@string/string_btnVolver"
+        android:layout_centerVertical="true">
+    </ImageView>
+
+</RelativeLayout>
+
+<TextView
+    android:id="@+id/abecedarioTitulo"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Traductor"
+    android:textSize="34sp"
+    android:textAllCaps="true"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginVertical="80dp">
+</TextView>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:layout_height="571dp"
         android:layout_gravity="center"
         android:layout_marginTop="40dp"
         android:padding="10dp"
@@ -80,41 +80,24 @@
             android:textSize="17dp"
             app:backgroundTint="@null" />
 
+        <WebView
+            android:id="@+id/webView"
+            android:layout_width="326dp"
+            android:layout_height="338dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="22dp"
+            android:layout_marginTop="162dp"
+            android:layout_marginEnd="21dp"
+            tools:ignore="WebViewLayout">
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/btnTraducir"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="0dp"
-            android:layout_marginRight="9dp">
+            <TextView
+                android:id="@+id/lblSalida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></TextView>
+        </WebView>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
-
-                <ImageSwitcher
-                    android:layout_width="match_parent"
-                    android:layout_height="300dp"
-
-                    android:layout_marginTop="35dp" />
-
-                <TextView
-                    android:id="@+id/lblSalida"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:layout_width="100dp"
-                    android:layout_height="50dp"
-                    android:src="@drawable/buttom_traductor_style" />
-
-
-            </LinearLayout>
-
-        </HorizontalScrollView>
 
     </RelativeLayout>
 

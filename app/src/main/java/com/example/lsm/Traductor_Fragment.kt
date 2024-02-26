@@ -15,12 +15,17 @@ import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import android.app.AlertDialog
 import android.content.Context
+import android.util.Log
+import android.view.inputmethod.InputMethodManager
+import android.webkit.WebView
 import android.widget.ImageView
+import kotlin.math.log
 
 class Traductor_Fragment : Fragment() {
     lateinit var txtEntrada: EditText
     lateinit var lblSalida: TextView
     lateinit var dbHelper: DataBase
+    lateinit var webView : WebView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +44,9 @@ class Traductor_Fragment : Fragment() {
         val btnEscuchar = root.findViewById<ImageButton>(R.id.btnEscuchar)
         txtEntrada = root.findViewById(R.id.txtEntrada)
         lblSalida = root.findViewById(R.id.lblSalida)
+        webView = root.findViewById(R.id.webView)
+        val webView: WebView = root.findViewById(R.id.webView)
+
 
         btnBack.setOnClickListener {
             findNavController().popBackStack()
@@ -46,13 +54,17 @@ class Traductor_Fragment : Fragment() {
 
         btnTraducir.setOnClickListener {
             val palabrasArray = dividirTextoEnArray(txtEntrada.text.toString())
+
             traducirPalabras(palabrasArray)
+
+            val inputMethodManager = requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            inputMethodManager.hideSoftInputFromWindow(view?.windowToken, 0)
 
         }
 
         btnEscuchar.setOnClickListener {
             startSpeechToText()
-            traerDatos()
+
         }
         return root
     }
@@ -98,6 +110,15 @@ class Traductor_Fragment : Fragment() {
             lblSalida.text = "No hay datos disponibles en la base de datos."
         }
     }
+    private fun dividirTextoEnArray(texto: String): Array<String> {
+        // Dividir el texto en palabras usando espacios en blanco como delimitador
+        val palabras = texto.split(Regex("\\s+")).toTypedArray()
+        return palabras.map { convertirAMayusculas(it) }.toTypedArray()
+    }
+    private fun convertirAMayusculas(palabra: String): String {
+        // Convertir la palabra a mayúsculas
+        return palabra.uppercase()
+    }
     fun mostrarResultadosEnAlert(context: Context, resultados: Array<String>) {
         val alertDialog = AlertDialog.Builder(context)
         alertDialog.setTitle("Resultados")
@@ -109,20 +130,21 @@ class Traductor_Fragment : Fragment() {
         val dialog = alertDialog.create()
         dialog.show()
     }
-    private fun dividirTextoEnArray(texto: String): Array<String> {
-        // Dividir el texto en palabras usando espacios en blanco como delimitador
-        val palabras = texto.split(Regex("\\s+")).toTypedArray()
-        return palabras.map { convertirAMayusculas(it) }.toTypedArray()
-    }
-    private fun convertirAMayusculas(palabra: String): String {
-        // Convertir la palabra a mayúsculas
-        return palabra.uppercase()
-    }
-    private fun traducirPalabras(texto: Array<String>){
-        val rutas = dbHelper.obtenerPalabras(texto)
-        mostrarResultadosEnAlert(requireContext(), rutas)
 
+    private fun traducirPalabras(texto: Array<String>) {
+        val rutas = dbHelper.obtenerImagenTraducida(texto)
+        Log.d("Traducción", "Rutas obtenidas: ${rutas.joinToString(", ")}")
+        val html = StringBuilder()
+        html.append("<div style='display: flex;'>")
+
+        for (ruta in rutas) {
+            html.append("<img src=\"$ruta\" style='margin-right: 10px;' />")
+        }
+        html.append("</div>")
+        val htmlData = html.toString()
+        webView.loadDataWithBaseURL(null, htmlData, "text/html", "UTF-8", null)
     }
+
     private fun crearImagenes(){
         
     }

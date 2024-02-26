@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 
 
 val BD = "baseDatos"
@@ -148,20 +149,47 @@ class DataBase(contexto: Context): SQLiteOpenHelper(contexto,BD,null,1) {
         val db = this.readableDatabase
         if (textos.isNotEmpty()) {
             val placeholders = Array(textos.size) { "?" }.joinToString(", ")
-            val sql = "SELECT * FROM Palabra WHERE texto IN ($placeholders)"
+            val sql = "SELECT imagen FROM Palabra WHERE texto IN ($placeholders)"
             val cursor = db.rawQuery(sql, textos)
 
             if (cursor.moveToFirst()) {
                 do {
                     val columnaTexto = cursor.getString(cursor.getColumnIndex("imagen"))
                     palabras.add(columnaTexto)
+                    Log.d("ObtenerPalabras", "Palabra obtenida: $columnaTexto")
                 } while (cursor.moveToNext())
             }
 
             cursor.close()
         }
+        return palabras.toTypedArray()
+    }
+
+    fun obtenerImagenTraducida(textos: Array<String>): Array<String> {
+        val palabras = mutableListOf<String>()
+        val db = this.readableDatabase
+
+        // Verificar que la lista no este vacia
+        if (textos.isNotEmpty()) {
+            // consulta
+            val placeholders = Array(textos.size) { "?" }.joinToString(", ")
+            val sql = "SELECT imagen FROM Palabra WHERE texto IN ($placeholders)"
+            val cursor = db.rawQuery(sql, textos)
+
+            if (cursor.moveToFirst()) {
+                do {
+                    val imagen = cursor.getString(cursor.getColumnIndex("imagen"))
+                    palabras.add(imagen)
+                } while (cursor.moveToNext())
+            }
+
+            cursor.close()
+            Log.d("ruta", "Rutas obtenidas: ${palabras.joinToString(", ")}")
+        }
+
 
         return palabras.toTypedArray()
     }
+
 
 }
